@@ -1,0 +1,21 @@
+{% extends 'artist/base.html' %}
+
+{% block content %}
+<h1>My Art Gallery 🎨</h1>
+
+<div style="display:grid;grid-template-columns: repeat(auto-fit, minmax(250px,1fr));gap:20px;">
+{% for art in artworks %}
+    <div style="background:white; padding:15px; border-radius:10px; box-shadow:0 0 10px lightgray;">
+        <img src="{{ art.image.url }}" width="100%" style="border-radius:10px;">
+        <h3>{{ art.title }}</h3>
+        <p><strong>{{ art.category }}</strong></p>
+        <p>{{ art.description }}</p>
+        <a href="?category=Mehendi">Mehendi</a> |
+        <a href="?category=Painting">Painting</a> |
+        <a href="?category=Drawing">Drawing</a> |
+        <a href="{% url 'gallery' %}">All</a>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
